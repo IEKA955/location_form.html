@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock In/Out Location Tracker</title>
+</head>
+<body>
+    <h1>Getting your location...</h1>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var location = latitude + "," + longitude;
+
+            // Replace 'YOUR_FORM_ID' with the Google Form ID
+            var googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=pp_url&entry.123456789=" + encodeURIComponent(location);
+
+            // Redirect to the Google Form with pre-filled location
+            window.location.href = googleFormUrl;
+        },
+        function(error) {
+            alert("Error getting location: " + error.message);
+        });
+    </script>
+</body>
+</html>
